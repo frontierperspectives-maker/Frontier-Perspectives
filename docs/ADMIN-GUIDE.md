@@ -76,7 +76,7 @@ simple editor**, one scrolling page:
 2. **Text box** — under the title, with a Word-like toolbar. This is the description/body.
    Click into it and type, or paste from Word. Toolbar: the **Paragraph** menu (choose
    *Heading 2* for a section heading), **B** bold, *I* italic, bullet list, numbered list,
-   quote, alignment, and the **link** (chain) button. The last button (**Toolbar Toggle**)
+   quote, alignment, and the **link** (chain) button. The last button (**Extended Toolbar**)
    shows a second row with more tools (underline, text colour, undo/redo, …). **Add Media**
    (above the toolbar) inserts an image or file.
 3. **Details box** — scroll **below** the text box. All the specific fields (institution,
@@ -96,7 +96,7 @@ simple editor**, one scrolling page:
 **Draft** → **OK** → click **Update**.
 
 **Undo:** press **Ctrl+Z** (⌘+Z on Mac) while typing, or show the second toolbar row
-(*Toolbar Toggle*) and use the undo arrow. For older changes, use **Revisions → Browse**
+(*Extended Toolbar*) and use the undo arrow. For older changes, use **Revisions → Browse**
 in the Publish box to restore an earlier version.
 
 ## A5. Copy-pasting text from Word, Google Docs or a website

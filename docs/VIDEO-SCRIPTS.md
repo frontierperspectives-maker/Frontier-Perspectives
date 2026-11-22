@@ -482,7 +482,7 @@ and download a copy to your computer."
 ---
 
 ## 22 · Undo, restore and the Trash
-**Shot list:** edit article → type a mistake → **Toolbar Toggle** → **Undo** · Publish box
+**Shot list:** edit article → type a mistake → **Extended Toolbar** → **Undo** · Publish box
 **Revisions: Browse** → slider → *Restore This Revision* (hover) · Jobs list → Trash → open
 **Trash** → **Restore**.
 

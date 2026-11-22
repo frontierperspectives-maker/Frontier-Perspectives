@@ -71,7 +71,13 @@ HTML],
 }
 
 add_action('init', function () {
-    if (get_option('fp_legal_drafts_created')) return;
-    fp_create_legal_drafts();
-    update_option('fp_legal_drafts_created', 1, false);
+    if (!get_option('fp_legal_drafts_created')) {
+        fp_create_legal_drafts();
+        update_option('fp_legal_drafts_created', 1, false);
+    }
+    // Make our page WordPress's official privacy page (used on the login screen etc.).
+    $privacy = get_page_by_path('privacy', OBJECT, 'page');
+    if ($privacy && (int) get_option('wp_page_for_privacy_policy') !== $privacy->ID) {
+        update_option('wp_page_for_privacy_policy', $privacy->ID);
+    }
 }, 100);

@@ -7,3 +7,5 @@ wp-config.php
 *.zip
 *.log
 .DS_Store
+recordings/
+*.mp4
