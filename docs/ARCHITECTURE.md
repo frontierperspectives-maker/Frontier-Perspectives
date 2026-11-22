@@ -20,6 +20,7 @@
 | Hosting | Hostinger shared web hosting, account `u359144621`, LiteSpeed web server |
 | Custom code | **One plugin** (`fp-core`) + **one theme** (`frontier`). No page builder, no ACF, no other content plugins. |
 | Front-end | Bootstrap 5.3.3 (bundled locally in the theme) + a small brand stylesheet (`assets/app.css`) |
+| Admin editor | **Classic editor for all content types and pages** (block editor disabled in `post-types.php`, `use_block_editor_for_post*` filters) so every field is visible on one scrolling page. Unused boxes (Custom Fields, Excerpt, Slug, and Featured image on listings) are hidden. Posts and Comments menus are hidden (the site uses Articles and has no comments). |
 | Source code | GitHub: `frontierperspectives-maker/Frontier-Perspectives` (this repository) |
 | History | Rebuilt in November 2026 from a hand-built CodeIgniter 3 site. Every old URL was kept identical. |
 

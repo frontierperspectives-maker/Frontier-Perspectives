@@ -101,3 +101,29 @@ add_action('save_post', fn($id) => fp_sync_deadline((int) $id), 99);
 add_action('updated_post_meta', function ($mid, $post_id, $key) { if ($key === fp_meta_key('deadline')) fp_sync_deadline((int) $post_id); }, 10, 3);
 add_action('added_post_meta',   function ($mid, $post_id, $key) { if ($key === fp_meta_key('deadline')) fp_sync_deadline((int) $post_id); }, 10, 3);
 add_action('deleted_post_meta', function ($mids, $post_id, $key) { if ($key === fp_meta_key('deadline')) fp_sync_deadline((int) $post_id); }, 10, 3);
+
+/**
+ * Everything uses the classic editor: one scrolling page with the title, a Word-like
+ * text box, every field visible underneath, and a simple Publish box. One editor to
+ * learn for a non-technical owner (the block editor hides custom fields in a
+ * collapsible bottom panel).
+ */
+add_filter('use_block_editor_for_post_type', '__return_false', 100);
+add_filter('use_block_editor_for_post', '__return_false', 100);
+
+/** Hide edit-screen boxes the listings don't use, so only meaningful fields are shown. */
+add_action('add_meta_boxes', function () {
+    foreach (['fp_job', 'fp_scholarship', 'fp_publication', 'fp_author', 'fp_hero'] as $type) {
+        remove_meta_box('postcustom', $type, 'normal');   // "Custom Fields"
+        remove_meta_box('postexcerpt', $type, 'normal');  // "Excerpt"
+        remove_meta_box('slugdiv', $type, 'normal');
+    }
+    remove_meta_box('postcustom', 'fp_article', 'normal');
+    remove_meta_box('postexcerpt', 'fp_article', 'normal'); // the Standfirst field is the summary
+    remove_meta_box('postcustom', 'page', 'normal');
+    remove_meta_box('slugdiv', 'fp_article', 'normal'); // the address is edited under the title
+    remove_meta_box('slugdiv', 'page', 'normal');
+    foreach (['fp_job', 'fp_scholarship', 'fp_hero'] as $type) {
+        remove_meta_box('postimagediv', $type, 'side');   // logos/images have their own fields
+    }
+}, 99);

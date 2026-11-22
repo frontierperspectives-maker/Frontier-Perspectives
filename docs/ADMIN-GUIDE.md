@@ -70,31 +70,34 @@ Clicking e.g. **Jobs & Fellowships** shows a table of all jobs.
 - Click a column heading such as **Deadline** or **Date** to sort by it.
 
 ## A4. The edit screen (how every item is edited)
-Every item (job, article, …) opens in the same kind of editor:
-1. **Title** — the big text at the top ("Add title").
-2. **Main text area** — under the title. This is the description/body. Click into it and
-   type. Press **Enter** for a new paragraph. To add a heading, list, image, quote etc.,
-   click the **+** button (block inserter) and choose the block.
-3. **Details box** — scroll **below** the text area. All the specific fields (institution,
+Every item — job, scholarship, article, publication, author, page — opens in the **same
+simple editor**, one scrolling page:
+1. **Title** — the box at the top ("Add title").
+2. **Text box** — under the title, with a Word-like toolbar. This is the description/body.
+   Click into it and type, or paste from Word. Toolbar: the **Paragraph** menu (choose
+   *Heading 2* for a section heading), **B** bold, *I* italic, bullet list, numbered list,
+   quote, alignment, and the **link** (chain) button. The last button (**Toolbar Toggle**)
+   shows a second row with more tools (underline, text colour, undo/redo, …). **Add Media**
+   (above the toolbar) inserts an image or file.
+3. **Details box** — scroll **below** the text box. All the specific fields (institution,
    deadline, application link, …) are here. Fields marked as required must be filled.
-4. **Right-hand sidebar** — settings for the whole item: status, publish date, URL (slug),
-   featured image, categories. If the sidebar is hidden, click the **square "Settings"
-   icon** at the top right.
-5. **SEO box** (articles and publications) — optional title/description for Google and
-   social media.
+4. **Right-hand column** — the **Publish** box (status, visibility, publish date) and, for
+   articles, **Categories**, **Tags**, **Featured image** and the **SEO** box.
+5. **Web address** — shown under the title as *Permalink* with an **Edit** button.
 
 **Saving:**
-- **Save draft** — saves privately; nothing appears on the website.
-- **Publish** — click **Publish**, then click **Publish** again in the confirmation panel.
-  The item is live immediately.
+- **Save Draft** — saves privately; nothing appears on the website.
+- **Publish** — one click; the item is live immediately. A message appears at the top, e.g.
+  *"Job published. View job"*.
 - After publishing, the button says **Update**. Click it after every change.
 - **Preview** — see what it will look like before publishing.
 
-**Unpublishing:** in the right sidebar click the status (**Published**) and choose
-**Draft**, then **Save**. (Or use **Switch to draft** at the top.)
+**Unpublishing:** in the Publish box, next to **Status: Published** click **Edit** → choose
+**Draft** → **OK** → click **Update**.
 
-**Undo:** the curved-arrow **Undo** button at the top undoes recent typing. For older
-changes, use **Revisions** in the right sidebar to restore an earlier version.
+**Undo:** press **Ctrl+Z** (⌘+Z on Mac) while typing, or show the second toolbar row
+(*Toolbar Toggle*) and use the undo arrow. For older changes, use **Revisions → Browse**
+in the Publish box to restore an earlier version.
 
 ## A5. Copy-pasting text from Word, Google Docs or a website
 Paste directly into the main text area — headings, bold, lists and links are kept. If
@@ -136,7 +139,7 @@ text, then re-apply headings with the **+** button.
    - **Application link** *(required)* — the official page where people apply
      (starts with https://).
    - **Keywords** — optional, one per line.
-5. Click **Publish** → **Publish**.
+5. Click **Publish** (top right).
 6. Click **View Job** to check it. It now appears on /jobs (and on /fellowships and the
    country page if applicable), sorted by deadline.
 
@@ -169,24 +172,26 @@ Graduate, Postgraduate, Postdoctoral, Visiting or Professional). It will appear 
 
 ## B4. Write a research article
 1. **Articles → Add New**.
-2. **Title** and the **article body** in the main text area. Use **Heading** blocks (+ →
-   Heading) for section titles, **Quote** for quotations, **Image** for pictures inside the
-   text, **List** for bullet points.
+2. **Title** and the **article body** in the text box. For a section title, put the cursor
+   on the line and choose **Heading 2** in the **Paragraph** menu. Use the **quote** button
+   for quotations, the **bullet list** button for lists, and **Add Media** for pictures inside
+   the text.
 3. **Details** box:
    - **Standfirst (summary)** — 1–3 sentences shown under the headline and on cards.
    - **Author** — choose from your Authors (create them first under Authors, see B6).
    - **Main image** — the large picture at the top. (Alternatively set a *Featured image*
-     in the right sidebar — either works.)
+     in the right-hand column — either works.)
    - **Image description (alt)** — describe the image for blind readers and Google.
    - **Caption**, **Photo credit** — shown under the image.
    - **Key findings** — one per line; shown as a highlighted teal box. Leave empty to hide it.
    - **Keywords** — for SEO, one per line.
-4. Right sidebar: tick a **Category** (create new ones with *Add New Category*); add
+4. Right-hand column: tick a **Category** (create new ones with *+ Add New Category*); add
    **Tags** (shown as small labels at the bottom of the article).
 5. **SEO** box (optional): custom Google title and description, and a **Social share image**
    used when the link is shared on LinkedIn/WhatsApp/Facebook.
-6. **Publish** — or **schedule** it: in the sidebar click **Publish: Immediately**, pick a
-   future date/time, then click **Schedule**. It goes live automatically at that time.
+6. **Publish** — or **schedule** it: in the Publish box, next to **Publish immediately**
+   click **Edit**, set a future date and time, click **OK**, then click **Schedule**. It goes
+   live automatically at that time.
 
 ## B5. Add a publication (journal, report, special edition)
 1. **Publications → Add New**.
@@ -217,7 +222,7 @@ The large box on the right of the homepage shows the **first** Hero Slide.
    headline, e.g. *New Report*), **Link target** (where clicking goes, e.g.
    `/articles/my-new-article` or `/publications/annual-report-2027`), **Standfirst**,
    **Date shown**.
-4. In the right sidebar set **Order** — the slide with the **lowest number** is shown
+4. In the **Attributes** box on the right set **Order** — the slide with the **lowest number** is shown
    (e.g. 0 beats 1).
 5. **Publish**.
 - To show the featured publication instead, move all Hero Slides to Draft.
@@ -319,10 +324,10 @@ title. Delete that first line in the main text area.
 Jobs page says "N open opportunities".
 
 ### Articles & publications
-**C-20. How do I schedule an article for next Monday?** Edit → sidebar **Publish:
-Immediately** → choose the date/time → **Schedule**.
+**C-20. How do I schedule an article for next Monday?** Edit → Publish box → **Publish
+immediately: Edit** → set the date/time → **OK** → **Schedule**.
 
-**C-21. How do I change an article's web address (URL)?** Sidebar → **URL** / **Slug**. ⚠️
+**C-21. How do I change an article's web address (URL)?** Under the title → *Permalink* → **Edit** → change → **OK** → **Update**. ⚠️
 Changing the address of an article that's already been shared breaks old links; WordPress
 usually redirects the old address, but avoid it when possible.
 
@@ -332,15 +337,17 @@ usually redirects the old address, but avoid it when possible.
 **C-23. How do I rename or delete a category?** Articles → Categories → hover → **Edit** or
 **Delete** (articles are not deleted).
 
-**C-24. How do I put an image inside an article?** In the text, click **+** → **Image** →
-**Upload** or **Media Library**. Add *Alt text* in the right sidebar.
+**C-24. How do I put an image inside an article?** Click in the text where it should go →
+**Add Media** → **Upload files** (or pick from the Media Library) → fill **Alternative Text**
+→ **Insert into article**.
 
 **C-25. How do I embed a YouTube video?** Paste the YouTube link on its own line in the
 article — it turns into a video player.
 
-**C-26. How do I add a table?** **+** → **Table** → choose columns/rows.
+**C-26. How do I add a table?** Make the table in Word or Google Docs, copy it, and paste it
+into the text box — the table is kept.
 
-**C-27. How do I make text a link?** Select the text → click the **link icon** (or
+**C-27. How do I make text a link?** Select the text → click the **link (chain) button** (or
 Ctrl/⌘+K) → paste the address → Enter.
 
 **C-28. How do I replace a publication's PDF?** Edit the publication → **PDF** →
@@ -369,7 +376,7 @@ General → **Tagline** → **Save Changes**.
 Identity** → **Site Icon** → upload a square 512×512 image → Publish.
 
 **C-45. How do I add a new simple page (e.g. "Partners", "FAQ")?** Pages → **Add New** →
-title + content → **Publish**. Its address is shown in the sidebar (e.g.
+title + content → **Publish**. Its address is shown under the title (e.g.
 `/partners`, also available as `/p/partners`). To link it in the main menu or footer, see
 C-46.
 
@@ -468,8 +475,8 @@ backup. Do this before big changes.
 **C-92. How do I restore something I deleted?** Within 30 days: open the list (e.g. Jobs) →
 **Trash** → hover → **Restore**. Older: restore a backup in Hostinger (C-91).
 
-**C-93. How do I restore an older version of an article's text?** Edit → right sidebar →
-**Revisions** → drag the slider to the version → **Restore**.
+**C-93. How do I restore an older version of an article's text?** Edit → Publish box →
+**Revisions: Browse** → drag the slider to the version → **Restore This Revision**.
 
 **C-94. Should I install other plugins?** Only when needed and from reputable authors. Never
 install page builders (Elementor etc.) — they're not needed and can conflict with the design.

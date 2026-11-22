@@ -96,3 +96,31 @@ add_action('manage_fp_hero_posts_custom_column', function ($col, $id) {
     if ($col === 'fp_order') echo (int) get_post_field('menu_order', $id);
     if ($col === 'fp_href')  echo esc_html(fp_get('href', $id));
 }, 10, 2);
+
+/* ---------- Declutter: the site uses Articles, not Posts, and has no comments ---------- */
+add_action('admin_menu', function () {
+    remove_menu_page('edit.php');          // Posts
+    remove_menu_page('edit-comments.php'); // Comments
+}, 999);
+add_action('admin_bar_menu', function ($bar) {
+    $bar->remove_node('comments');
+    $bar->remove_node('new-post');
+}, 999);
+add_filter('comments_open', '__return_false', 20);
+add_filter('pings_open', '__return_false', 20);
+add_filter('comments_array', '__return_empty_array', 10);
+
+/* ---------- Friendly save messages: "Job published. View job" instead of "Post published." ---------- */
+add_filter('post_updated_messages', function ($messages) {
+    $types = ['fp_article' => 'Article', 'fp_publication' => 'Publication', 'fp_job' => 'Job', 'fp_scholarship' => 'Scholarship', 'fp_author' => 'Author', 'fp_hero' => 'Hero slide'];
+    foreach ($types as $type => $label) {
+        $post = get_post();
+        $view = ($post && $type !== 'fp_hero' && $type !== 'fp_author')
+            ? sprintf(' <a href="%s">View %s</a>', esc_url(get_permalink($post)), strtolower($label)) : '';
+        $messages[$type] = [
+            0 => '', 1 => "$label updated.$view", 4 => "$label updated.", 6 => "$label published.$view",
+            7 => "$label saved.", 8 => "$label submitted.", 9 => "$label scheduled.", 10 => "$label draft updated.",
+        ];
+    }
+    return $messages;
+});

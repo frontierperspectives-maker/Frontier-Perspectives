@@ -48,6 +48,16 @@ If you need a video that isn't listed below, paste this into an AI together with
 
 ---
 
+### 0.4 About the ready-made recordings
+Raw screen recordings of videos **01–23** were made automatically on the staging site
+(1920×1080, 30 fps, no sound) with a visible cursor and click highlights. Each MP4 has a
+`.timeline.json` listing every step with its time in seconds — use it to place captions,
+zooms and voiceover in Remotion. The footage is paced slower than real use; trim pauses or
+freeze frames to fit the voiceover. Things that could not be recorded automatically and need
+a short manual recording if wanted: the Hostinger hPanel backup screens (video 21), Google
+Search Console (video 20), and ChatGPT/Claude (video 24). In video 02 the login is faked with
+placeholder text — cut from "Log In" straight to the Dashboard.
+
 ## Video list
 
 | # | Title | Length |
@@ -170,20 +180,20 @@ computer.
 **Shot list**
 1. **Jobs & Fellowships → Add New**.
 2. Type title "DEMO – Postdoctoral Researcher in Public Health".
-3. Paste the description into the main text area; add one heading with **+ → Heading**.
+3. Paste the description into the text box; point at the **Paragraph** style menu (headings).
 4. Scroll to **Details**; fill **Institution**, upload **Institution logo** (Choose / upload
    → Upload files → Select Files → Choose file), **Location**, **Country / region**,
    **Remote OK** (leave unticked), **Position type** = Postdoc, **Field / discipline** =
    Health, **Salary / stipend**, **Application deadline** (pick a date 3 weeks ahead),
    **Application link**.
-5. **Publish → Publish** → **View Job**.
+5. **Publish** → message *"Job published. View job"* → **View job**.
 6. Open `/jobs` — show the new job in the list and as a filter value.
 
 **Voiceover**
 "Let's add a job. Go to Jobs and Fellowships, then Add New.
 First the title — the position name exactly as you'd like visitors to see it.
-Below it is the main text area. Paste the full job description here. Formatting from Word or
-the original website is kept. To add a heading, click the plus button and choose Heading.
+Below it is the text box. Paste the full job description here — formatting from Word or the
+original website is kept. To turn a line into a heading, use the Paragraph menu in the toolbar.
 Now scroll down to the Details box. Institution is required — that's the employer. Upload the
 institution's logo: click Choose or upload, Upload files, select the image, and Choose file.
 Location is free text, as you want it shown. Country or region decides which country page it
@@ -193,15 +203,15 @@ Field or discipline becomes a filter on the Jobs page automatically.
 Salary is optional. Then the application deadline — pick the date. If there's no fixed
 deadline, leave it empty and type something like 'Open until filled' in the Deadline note.
 Finally, the application link — the official page where people apply.
-Click Publish, and Publish again to confirm. That's it — the job is live. Here it is on the
+Click Publish. That's it — the job is live. Here it is on the
 Jobs page, sorted by deadline, with its field already available as a filter."
 
 ---
 
 ## 05 · Adding a fellowship
-**Shot list:** Duplicate the DEMO job → change title to "DEMO – Visiting Research
-Fellowship" → **Position type** = Visiting Fellowship → Publish → open `/fellowships` and the
-**Fellowships → Visiting Fellowships** menu item.
+**Shot list:** search "DEMO" → hover the DEMO job → **Duplicate** → change title to "DEMO –
+Visiting Research Fellowship" → **Position type** = Visiting Fellowship → Publish → open
+`/fellowships` and the **Fellowships → Visiting Fellowships** menu item.
 
 **Voiceover**
 "Fellowships are added exactly like jobs — the only difference is the Position type.
@@ -281,49 +291,51 @@ old links keep working and Google is told the job has closed."
 
 ## 09 · Writing and publishing an article
 **Shot list**
-1. **Articles → Add New**; title; type 2 paragraphs; **+ → Heading**; **+ → Quote**;
-   **+ → List**.
+1. **Articles → Add New**; title; type a paragraph; **Paragraph menu → Heading 2**; a
+   **bullet list**; a sentence turned into a **quote**.
 2. Details: **Standfirst**, **Author**, **Main image** + **Image description (alt)**,
    **Caption**, **Photo credit**, **Key findings** (3 lines).
-3. Sidebar: tick a **Category**, add 2 **Tags**.
-4. **Preview** → **Publish** → view article.
+3. Right-hand column: tick a **Category**, add 2 **Tags**.
+4. **Publish** → **View article**.
 
 **Voiceover**
 "Let's publish a research article. Articles, Add New.
-Type the headline as the title, then write or paste the article. Use the plus button to add
-headings for sections, quotes, and bullet lists — this makes long articles easy to read and
-helps Google understand them.
+Type the headline as the title, then write or paste the article. The toolbar works like Word:
+use the Paragraph menu to make section headings, and the buttons for bullet lists and quotes —
+this makes long articles easy to read and helps Google understand them.
 Below, in Details: the standfirst is a one-to-three sentence summary shown under the headline
 and on article cards. Choose the author. Add a main image — then describe it in the 'alt' box
 for blind readers and search engines — plus a caption and photo credit if needed.
 Key findings appear as a highlighted box at the top. One finding per line. Leave it empty if
 you don't want the box.
-On the right, tick a category, and add a few tags.
+In the right-hand column, tick a category, and add a few tags.
 Click Preview to check it, then Publish. Here it is, live, with the reading time calculated
 automatically."
 
 ---
 
 ## 10 · Images, links, videos and tables inside articles
-**Shot list:** + → Image → Upload → add Alt text · select text → link icon → paste URL ·
-paste a YouTube URL on its own line · + → Table (3×3).
+**Shot list:** **Add Media** → Upload files → Alt text → **Insert into article** · select
+words → **link** button → paste address → Enter · paste a YouTube link on its own line ·
+paste a table copied from Word/Google Docs · **Update** → view.
 
 **Voiceover**
-"Inside an article you can add more than text. Click plus, Image, and upload a picture — add
-its alt text in the right sidebar.
+"Inside an article you can add more than text. Click where the picture should go, then Add
+Media, upload the image, describe it in the Alternative Text box, and click Insert.
 To make a link, select the words, click the link icon, and paste the address.
 To embed a video, just paste the YouTube link on its own line; it becomes a player.
-And for data, plus, Table, choose the columns and rows, and type in the cells."
+And for a table, make it in Word or Google Docs, copy it, and paste it into the article — the
+table is kept. Click Update to save."
 
 ---
 
 ## 11 · Scheduling an article
-**Shot list:** Edit a draft → sidebar **Publish: Immediately** → pick next Monday 9:00 →
-**Schedule** → Articles list shows **Scheduled**.
+**Shot list:** new article → Publish box → **Publish immediately: Edit** → date/time 9:00 next
+week → **OK** → **Schedule** → Articles list shows **Scheduled**.
 
 **Voiceover**
-"You can prepare articles in advance. In the sidebar, click 'Publish: Immediately', choose
-the date and time, and the button changes to Schedule. Click it, and the article goes live
+"You can prepare articles in advance. In the Publish box, next to 'Publish immediately', click
+Edit, set the date and time, and click OK. The Publish button changes to Schedule. Click it, and the article goes live
 by itself at that moment. In the list it shows as Scheduled."
 
 ---
@@ -470,12 +482,14 @@ and download a copy to your computer."
 ---
 
 ## 22 · Undo, restore and the Trash
-**Shot list:** edit article → change text → **Undo** · sidebar **Revisions** → slider →
-**Restore** · list → Trash → Restore.
+**Shot list:** edit article → type a mistake → **Toolbar Toggle** → **Undo** · Publish box
+**Revisions: Browse** → slider → *Restore This Revision* (hover) · Jobs list → Trash → open
+**Trash** → **Restore**.
 
 **Voiceover**
-"Mistakes are easy to fix. While editing, the undo arrow reverses recent changes. For older
-changes, open Revisions in the sidebar, slide back to an earlier version, and restore it. And
+"Mistakes are easy to fix. While typing, press Control Z — or show the second toolbar row and
+click the undo arrow. For older changes, click Browse next to Revisions, slide back to an
+earlier version, and restore it. And
 anything deleted sits in the Trash for thirty days — open Trash and click Restore."
 
 ---
