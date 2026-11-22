@@ -1,0 +1,9 @@
+# Never commit secrets or server-specific files
+wp-config.php
+.env
+*.sql
+*.sql.gz
+*.tar.gz
+*.zip
+*.log
+.DS_Store
