@@ -9,3 +9,4 @@ wp-config.php
 .DS_Store
 recordings/
 *.mp4
+handover/
