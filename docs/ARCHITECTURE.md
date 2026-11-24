@@ -295,7 +295,7 @@ Brand colours (`assets/app.css`): `--navy #0F5C5C` (teal), `--navy-light #0E7C7B
   dumps, `wp-config.php`, `readme.html`, etc.
 - **Updates:** WordPress core minor/security updates install automatically. Check
   Dashboard → Updates monthly; update plugins one at a time and check the site after each.
-- **Plugins installed:** `fp-core` (custom, required) and `hostinger` (Hostinger Tools).
+- **Plugins installed:** `fp-core` (custom, required), `hostinger` (Hostinger Tools) and `wp-mail-smtp` (sends the site's emails through Gmail).
   Recommended additions at launch: *LiteSpeed Cache* (speed) and an SMTP plugin such as
   *WP Mail SMTP* (email delivery). Avoid page builders — they are not needed.
 - **Theme:** `frontier` (custom, required by the design).
@@ -306,7 +306,7 @@ Brand colours (`assets/app.css`): `--navy #0F5C5C` (teal), `--navy-light #0E7C7B
 
 ## 8. Known limitations / open items (as of handover)
 
-1. **Email delivery** — WordPress cannot reliably send email until SMTP is configured (WP Mail SMTP is installed; needs a Gmail App Password)
+1. **Email delivery** — ✅ configured 24 Nov 2026: WP Mail SMTP → Other SMTP → `smtp.gmail.com:587` TLS, user `frontierperspectives@gmail.com`, password = a Google *App Password* named "Frontier Website". If emails stop (e.g. the Google password was changed or 2-Step Verification turned off), create a new App Password and paste it into WP Mail SMTP → Settings.
    (contact-form notifications, password-reset emails). Messages are always saved in the
    admin regardless.
 2. **Privacy Policy and Terms of Use** — created as *drafts* from a template; review and

@@ -407,8 +407,13 @@ the Site Settings contact email (only if email sending is set up — see C-62).
 **All** and **Trash**. The form refuses messages with more than 5 links or over 5,000
 characters, and limits each person to 5 messages per 10 minutes (anti-spam).
 
-**C-62. Emails from the website (notifications, password resets) don't arrive.** WordPress
-needs an email service ("SMTP") to send reliably. One-time setup (≈10 minutes):
+**C-62. Emails from the website (notifications, password resets) don't arrive.** The site
+sends email through the Gmail account frontierperspectives@gmail.com (already set up). First
+check Gmail's **Spam** folder. Then **WP Mail SMTP → Tools → Email Test** — if it fails, the
+usual cause is that the Gmail password was changed or 2-Step Verification was turned off,
+which cancels the *App Password*. Create a new App Password (Google Account → Security →
+App passwords) and paste it into **WP Mail SMTP → Settings → SMTP Password** → Save.
+Original setup, for reference (≈10 minutes):
 1. Create a mailbox for the domain — e.g. `noreply@frontierperspectives.com` — in
    **Hostinger hPanel → Emails** (most Hostinger plans include free email). Or use a
    Gmail account with an *App Password* (Google Account → Security → 2-Step Verification →
