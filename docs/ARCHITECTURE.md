@@ -290,6 +290,7 @@ Brand colours (`assets/app.css`): `--navy #0F5C5C` (teal), `--navy-light #0E7C7B
   `u359144621_fp_research` was left untouched. To roll back, move the WordPress files out of
   `public_html` and the old files back in. Once the new site has run well for a month or two,
   both can be deleted (keep a downloaded copy).
+- **Google Search Console:** verified with the file `public_html/google12fd5cc4ad7ab8b0.html` (owner: frontierperspectives@gmail.com). **Never delete it** — Google re-checks it; deleting it loses Search Console access. Sitemap submitted: `wp-sitemap.xml`.
 - **Old image links:** `/uploads/<file>` (old site) redirects to
   `/wp-content/uploads/2026/11/<file>` via the root `.htaccess`, which also blocks archives,
   dumps, `wp-config.php`, `readme.html`, etc.
