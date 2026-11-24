@@ -14,7 +14,7 @@
 
 | | |
 |---|---|
-| Website | https://frontierperspectives.com (staging copy: https://staging.frontierperspectives.com) |
+| Website | https://frontierperspectives.com (WordPress in `public_html`; went live 24 Nov 2026) |
 | What it is | A research and opportunities platform: research articles, publications, and listings of academic jobs, fellowships, scholarships and grants. |
 | Platform | WordPress (self-hosted), PHP 8.3, MySQL/MariaDB |
 | Hosting | Hostinger shared web hosting, account `u359144621`, LiteSpeed web server |
@@ -208,7 +208,7 @@ quote and the homepage meta description.
   lists articles.
 - Open Graph / Twitter card tags in `helpers.php`.
 - **Search-engine visibility:** Settings → Reading → "Discourage search engines" must be
-  **unticked** on the live site (it is ticked on staging on purpose).
+  **unticked** on the live site (tick it only on staging copies).
 
 ### 4.7 Security (`inc/security.php`)
 XML-RPC refused (403) · login throttling (6 failures per IP or 10 per username → 20-minute
@@ -246,9 +246,8 @@ Brand colours (`assets/app.css`): `--navy #0F5C5C` (teal), `--navy-light #0E7C7B
 
 ## 6. How to make code changes safely
 
-1. **Never edit code on the live site first.** Use the staging site
-   (`staging.frontierperspectives.com`, folder `public_html/staging`) if it still exists,
-   or create one with Hostinger's *WordPress → Staging* tool.
+1. **Never edit code on the live site first.** Create a staging copy with Hostinger's
+   *WordPress → Staging* tool (hPanel), test there, then apply the same change to live.
 2. Edit the file in this GitHub repository (GitHub's web editor works fine for small
    text changes).
 3. Upload the changed file(s) to the same path under `wp-content/` using **Hostinger
@@ -286,6 +285,14 @@ Brand colours (`assets/app.css`): `--navy #0F5C5C` (teal), `--navy-light #0E7C7B
   create a manual backup there. The original CodeIgniter site's backups from 2026-11-09 are
   in the private folder `/domains/frontierperspectives.com/fp-backups-private/` (not
   web-accessible).
+- **Old site (rollback):** the CodeIgniter files were moved (not deleted) to
+  `/domains/frontierperspectives.com/old-codeigniter-site/` and its database
+  `u359144621_fp_research` was left untouched. To roll back, move the WordPress files out of
+  `public_html` and the old files back in. Once the new site has run well for a month or two,
+  both can be deleted (keep a downloaded copy).
+- **Old image links:** `/uploads/<file>` (old site) redirects to
+  `/wp-content/uploads/2026/11/<file>` via the root `.htaccess`, which also blocks archives,
+  dumps, `wp-config.php`, `readme.html`, etc.
 - **Updates:** WordPress core minor/security updates install automatically. Check
   Dashboard → Updates monthly; update plugins one at a time and check the site after each.
 - **Plugins installed:** `fp-core` (custom, required) and `hostinger` (Hostinger Tools).
@@ -299,7 +306,7 @@ Brand colours (`assets/app.css`): `--navy #0F5C5C` (teal), `--navy-light #0E7C7B
 
 ## 8. Known limitations / open items (as of handover)
 
-1. **Email delivery** — WordPress cannot reliably send email until SMTP is configured
+1. **Email delivery** — WordPress cannot reliably send email until SMTP is configured (WP Mail SMTP is installed; needs a Gmail App Password)
    (contact-form notifications, password-reset emails). Messages are always saved in the
    admin regardless.
 2. **Privacy Policy and Terms of Use** — created as *drafts* from a template; review and

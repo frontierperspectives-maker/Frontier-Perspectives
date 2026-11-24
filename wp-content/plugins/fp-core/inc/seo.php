@@ -200,7 +200,7 @@ add_action('wp_head', function () {
 
 // WordPress core sitemap (/wp-sitemap.xml): no user sitemap (it would expose usernames), no tag pages.
 add_filter('wp_sitemaps_add_provider', fn($provider, $name) => $name === 'users' ? false : $provider, 10, 2);
-add_filter('wp_sitemaps_taxonomies', function ($t) { unset($t['post_tag']); return $t; });
+add_filter('wp_sitemaps_taxonomies', function ($t) { unset($t['post_tag'], $t['category'], $t['post_format']); return $t; });
 add_filter('wp_sitemaps_post_types', function ($t) { unset($t['post'], $t['attachment']); return $t; });
 
 // /sitemap.xml (common guess by bots and tools) → the real one.
