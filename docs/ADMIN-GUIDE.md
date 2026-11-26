@@ -481,6 +481,12 @@ fields. To give each job the best chance:
    **Request indexing**.
 7. Share the job link on LinkedIn / WhatsApp groups — visits and links help Google trust the site.
 
+**C-88. What is "Site Settings → Google Indexing"?** It tells Google instantly whenever you
+publish, change or remove a job, so jobs can appear in Google's job search within hours. It works
+on its own — nothing to do per job. The page shows the latest results (**OK** = Google accepted).
+If you see errors like *Permission denied*, the service account was removed from Search Console
+(Settings → Users and permissions → add it back as **Owner**).
+
 **C-87. Why isn't my job on page 1 of Google?** A new website needs weeks to months to build
 trust; big job boards (Indeed, LinkedIn) dominate ordinary results. Check Google's **job search
 panel** instead (search e.g. "medical lab scientist jobs Lehi Utah" and click the jobs box), and

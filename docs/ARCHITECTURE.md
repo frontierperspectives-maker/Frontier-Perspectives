@@ -47,6 +47,7 @@ wp-content/
     inc/seo.php                    titles, descriptions, canonicals, noindex rules, structured data, sitemap
     inc/security.php               hardening (XML-RPC off, login throttling, headers, no user enumeration…)
     inc/legal.php                  creates draft Privacy Policy and Terms of Use pages once
+    inc/indexing.php               Google Indexing API: notifies Google when jobs are published/changed/removed/expire
     inc/import.php                 one-time importer from the old CodeIgniter database (Tools → Import Old Site)
   themes/frontier/                 ← how it looks
     style.css                      theme header (name, version)
@@ -291,6 +292,7 @@ Brand colours (`assets/app.css`): `--navy #0F5C5C` (teal), `--navy-light #0E7C7B
   `public_html` and the old files back in. Once the new site has run well for a month or two,
   both can be deleted (keep a downloaded copy).
 - **Root `.htaccess`:** a copy is in `server/htaccess-public_html`. The top *Frontier Perspectives hardening* block blocks archives/dumps/config files, redirects old `/uploads/` image links, and makes HTML pages and the sitemap **uncacheable** (otherwise Hostinger's default WordPress block caches pages for a week, so new/expired jobs would show late). Keep that block when editing the file; WordPress only rewrites its own `# BEGIN/END WordPress` section.
+- **Google Indexing API:** *Site Settings → Google Indexing*. A Google Cloud service account (JSON key pasted there, stored in the non-autoloaded option `fp_indexing_key`) must be an **Owner** in Search Console. Jobs are sent automatically on publish/update (`URL_UPDATED`) and unpublish/trash (`URL_DELETED`), via WP-Cron a few seconds later; a daily cron (`fp_idx_daily`) re-sends jobs whose deadline passed yesterday. Google quota: ~200/day. The page shows the last 30 results.
 - **Google Search Console:** verified with the file `public_html/google12fd5cc4ad7ab8b0.html` (owner: frontierperspectives@gmail.com). **Never delete it** — Google re-checks it; deleting it loses Search Console access. Sitemap submitted: `wp-sitemap.xml`.
 - **Old image links:** `/uploads/<file>` (old site) redirects to
   `/wp-content/uploads/2026/11/<file>` via the root `.htaccess`, which also blocks archives,

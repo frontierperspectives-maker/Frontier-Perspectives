@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Frontier Perspectives Core
  * Description: Content model and site behaviour for Frontier Perspectives — articles, publications, jobs, scholarships, authors, hero slides, settings, contact messages, deadline auto-hide and legacy URL routes.
- * Version: 1.3.0
+ * Version: 1.4.0
  * Requires PHP: 8.0
  * Author: Frontier Perspectives
  * Text Domain: fp-core
@@ -10,7 +10,7 @@
 
 defined('ABSPATH') || exit;
 
-define('FP_CORE_VERSION', '1.3.0');
+define('FP_CORE_VERSION', '1.4.0');
 define('FP_CORE_DIR', plugin_dir_path(__FILE__));
 
 /** Sentinel used by the old site for "no fixed deadline". Items with it never expire. */
@@ -28,6 +28,7 @@ require_once FP_CORE_DIR . 'inc/import.php';
 require_once FP_CORE_DIR . 'inc/seo.php';
 require_once FP_CORE_DIR . 'inc/security.php';
 require_once FP_CORE_DIR . 'inc/legal.php';
+require_once FP_CORE_DIR . 'inc/indexing.php';
 
 /**
  * One-time settings migrations, run whenever the plugin version changes.
