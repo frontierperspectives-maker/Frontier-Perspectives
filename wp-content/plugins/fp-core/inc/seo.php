@@ -40,17 +40,54 @@ function fp_seo_meta(): array {
 
     if (is_singular()) {
         $p = get_queried_object();
-        $custom = fp_get('meta_title', $p);
-        $desc = fp_get('meta_description', $p) ?: fp_get('standfirst', $p) ?: ($p->post_excerpt ?: $p->post_content);
-        $title = match ($p->post_type) {
-            'fp_job'         => $p->post_title . ' — ' . fp_get('institution', $p),
-            'fp_scholarship' => $p->post_title . ' — ' . fp_get('funder', $p),
-            default          => $p->post_title,
-        };
-        return [$custom ?: $title, $desc];
+        $custom_title = fp_get('meta_title', $p);
+        $custom_desc  = fp_get('meta_description', $p);
+
+        if ($p->post_type === 'fp_job' || $p->post_type === 'fp_scholarship') {
+            [$title, $desc] = fp_listing_seo($p);
+            return [$custom_title ?: $title, $custom_desc ?: $desc];
+        }
+        $desc = $custom_desc ?: fp_get('standfirst', $p) ?: ($p->post_excerpt ?: $p->post_content);
+        return [$custom_title ?: $p->post_title, $desc];
     }
     if (is_404()) return ['Page not found', ''];
     return ['', ''];
+}
+
+/**
+ * Google title + description for a job or scholarship, built from its fields so every
+ * listing is search-friendly without extra typing:
+ *   "Medical Lab Scientist (Non-CA) — Holy Cross Hospital, Lehi"
+ *   "Medical Lab Scientist (Non-CA) at Holy Cross Hospital in Lehi, Utah, USA. $31.63–$45.88 per hour. Rolling applications. See requirements and how to apply."
+ */
+function fp_listing_seo(WP_Post $p): array {
+    $is_job = $p->post_type === 'fp_job';
+    $org    = trim((string) fp_get($is_job ? 'institution' : 'funder', $p));
+    $loc    = trim((string) ($is_job ? fp_get('location', $p) : ''));
+    $country = trim((string) fp_get('country', $p));
+    $city   = trim(explode(',', $loc ?: $country)[0]);
+
+    $title = $p->post_title . ($org ? " — $org" : '');
+    if ($city && stripos($p->post_title . ' ' . $org, $city) === false) $title .= ", $city";
+
+    $deadline = fp_get('deadline', $p); $note = trim((string) fp_get('deadline_note', $p));
+    if ($note && mb_strlen($note) > 60) {           // keep the first clause, cut on a word
+        $note = preg_split('/[,.;:]/u', $note)[0];
+        if (mb_strlen($note) > 60) { $note = mb_substr($note, 0, 60); $note = mb_substr($note, 0, (int) mb_strrpos($note, ' ')); }
+    }
+    $when = $note ? rtrim($note, " .,;:") : ($deadline ? 'Apply by ' . date_i18n('j F Y', strtotime($deadline)) : '');
+    $bits = [];
+    if ($is_job) {
+        $bits[] = $p->post_title . ($org ? " at $org" : '') . ($loc ? " in $loc" : ($country ? " in $country" : '')) . '.';
+        if ($s = trim((string) fp_get('salary', $p))) $bits[] = rtrim($s, '.') . '.';
+    } else {
+        $level = trim((string) fp_get('level', $p));
+        $bits[] = $p->post_title . ($org ? " by $org" : '') . '.';
+        if ($level || $country) $bits[] = trim(implode(' · ', array_filter([$level, $country]))) . '.';
+    }
+    if ($when) $bits[] = "$when.";
+    $bits[] = $is_job ? 'See requirements and how to apply.' : 'See eligibility, benefits and how to apply.';
+    return [$title, implode(' ', $bits)];
 }
 
 add_filter('pre_get_document_title', function ($title) {
@@ -127,6 +164,52 @@ function fp_address(WP_Post $p): array {
     return $addr;
 }
 
+/**
+ * Turn free-text salary ("$31.63–$45.88 per hour", "AUD $80,000–$120,000 per year",
+ * "£32,073 - £39,043 per annum", "USD 25.53-25.80") into Google's MonetaryAmount.
+ * Returns null when no number is found. Never throws.
+ */
+function fp_parse_salary(string $text, string $country = ''): ?array {
+    $t = html_entity_decode($text, ENT_QUOTES, 'UTF-8');
+    $t = str_replace(["\u{2013}", "\u{2014}", "\u{2212}", ' to '], '-', $t);
+
+    // Currency: explicit code first, then symbol, then country.
+    $currency = null;
+    if (preg_match('/\b(USD|GBP|EUR|AUD|CAD|NZD|PKR|INR|AED|SAR|CHF|SGD|JPY|CNY|ZAR|NGN|KES)\b/i', $t, $m)) $currency = strtoupper($m[1]);
+    elseif (str_contains($t, '£')) $currency = 'GBP';
+    elseif (str_contains($t, '€')) $currency = 'EUR';
+    elseif (str_contains($t, '$')) $currency = ['Canada' => 'CAD', 'Australia' => 'AUD', 'New Zealand' => 'NZD'][$country] ?? 'USD';
+    if (!$currency) return null;
+
+    // Numbers (allow 1,234.56 and 45k).
+    preg_match_all('/(\d{1,3}(?:,\d{3})+|\d+)(?:\.(\d+))?\s*(k)?\b/i', $t, $mm, PREG_SET_ORDER);
+    $nums = [];
+    foreach ($mm as $m) {
+        $n = (float) (str_replace(',', '', $m[1]) . (isset($m[2]) && $m[2] !== '' ? '.' . $m[2] : ''));
+        if (!empty($m[3])) $n *= 1000;
+        if ($n > 0) $nums[] = $n;
+    }
+    if (!$nums) return null;
+    $min = min(array_slice($nums, 0, 2)); $max = max(array_slice($nums, 0, 2));
+
+    // Period: stated, or inferred from size.
+    $lt = strtolower($t);
+    $unit = match (true) {
+        (bool) preg_match('/\b(hour|hr|hourly)\b|\/\s*h\b/', $lt) => 'HOUR',
+        (bool) preg_match('/\b(day|daily)\b/', $lt)                => 'DAY',
+        (bool) preg_match('/\b(week|weekly|wk)\b/', $lt)           => 'WEEK',
+        (bool) preg_match('/\b(month|monthly|pcm)\b/', $lt)        => 'MONTH',
+        (bool) preg_match('/\b(year|yearly|annum|annual|annually|p\.?a\.?|yr)\b/', $lt) => 'YEAR',
+        $max < 300   => 'HOUR',
+        $max < 20000 => 'MONTH',
+        default      => 'YEAR',
+    };
+
+    $value = ['@type' => 'QuantitativeValue', 'unitText' => $unit];
+    if ($min == $max) $value['value'] = $min; else { $value['minValue'] = $min; $value['maxValue'] = $max; }
+    return ['@type' => 'MonetaryAmount', 'currency' => $currency, 'value' => $value];
+}
+
 add_action('wp_head', function () {
     if (is_front_page()) {
         fp_jsonld(['@context' => 'https://schema.org', '@graph' => [
@@ -177,6 +260,9 @@ add_action('wp_head', function () {
         }
         if (fp_get('location', $p) || fp_get('country', $p)) {
             $job['jobLocation'] = ['@type' => 'Place', 'address' => fp_address($p)];
+        }
+        if ($salary = fp_parse_salary((string) fp_get('salary', $p), (string) fp_get('country', $p))) {
+            $job['baseSalary'] = $salary;
         }
         $graph[] = $job;
     } elseif ($p->post_type === 'fp_article') {

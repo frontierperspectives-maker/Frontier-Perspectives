@@ -466,6 +466,27 @@ information Google for Jobs needs. Expired jobs are automatically marked as expi
 **C-84. How do I see visitor numbers?** Install **Site Kit by Google** (Plugins → Add New),
 connect Google Analytics, and visitor charts appear in the Dashboard.
 
+**C-86. How do I get a job to show on Google?** Every job page already includes the data Google's
+job search needs, and its Google title and description are written automatically from the
+fields. To give each job the best chance:
+1. **Title** = the real job title, e.g. *Medical Laboratory Scientist* (not "Great opportunity!").
+2. **Fill Location, Country, Institution and Application link** every time.
+3. **Salary** in a standard form, e.g. `$31–$45 per hour`, `£32,000 – £39,000 per year`,
+   `AUD $80,000 per year` — the site converts it for Google; jobs with a salary are favoured.
+4. **Set a deadline** when there is one.
+5. **Add 2–3 sentences of your own** at the top of the description (who it suits, what's
+   special, key requirement). Google ignores pages that are 100% copied from elsewhere — your
+   own summary is what makes the page worth showing.
+6. For important jobs: Google **Search Console → URL inspection** → paste the job's address →
+   **Request indexing**.
+7. Share the job link on LinkedIn / WhatsApp groups — visits and links help Google trust the site.
+
+**C-87. Why isn't my job on page 1 of Google?** A new website needs weeks to months to build
+trust; big job boards (Indeed, LinkedIn) dominate ordinary results. Check Google's **job search
+panel** instead (search e.g. "medical lab scientist jobs Lehi Utah" and click the jobs box), and
+**Search Console → Performance** to see which searches already show your pages. Keep posting
+regularly — consistency matters more than any single post.
+
 **C-85. Google doesn't show the site at all.** Settings → **Reading** → make sure
 **"Discourage search engines from indexing this site" is NOT ticked** → Save.
 
